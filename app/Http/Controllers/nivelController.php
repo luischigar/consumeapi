@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Nivel;
 
 class nivelController extends Controller
 {
@@ -13,17 +14,8 @@ class nivelController extends Controller
      */
     public function index()
     {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        $nivel= Nivel::all();
+        return response()->json(['nivel'=>$nivel, 'code'=>'200']) ; 
     }
 
     /**
@@ -34,7 +26,15 @@ class nivelController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        if(empty($request->descripcion)) {
+
+            return response()->json(['message'=>'Todos los campos son reueridos', 'code'=>'406']);
+        }
+
+        $nivel = new Nivel();
+        $nivel->descripcion=$request->descripcion;
+        $nivel->save();
+        return response()->json(['message'=>'nivel creado correctamente', 'code'=>'201']);
     }
 
     /**
@@ -45,18 +45,12 @@ class nivelController extends Controller
      */
     public function show($id)
     {
-        //
-    }
+        $nivel= Nivel::find($id);
+       if((empty($nivel))){
+        return response()->json(['message'=>'nivel no encontrado', 'code'=>'404']) ;
+       }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
+       return response()->json(['nivel'=>$nivel, 'code'=>'200']) ;
     }
 
     /**
@@ -68,7 +62,21 @@ class nivelController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        if(empty($request->descripcion)) {
+
+            return response()->json(['message'=>'Todos los campos son requeridos', 'code'=>'406']);
+        }
+
+
+        $nivel=Nivel::find($id);
+        if(empty($nivel)){
+
+                return response()->json(['message'=>'nivel no encontrado', 'code'=>'404']);
+        }
+        
+        $nivel->descripcion=$request->descripcion;
+        $nivel->update();
+        return response()->json(['message'=>'nivel actualizado', 'code'=>'200']);
     }
 
     /**
@@ -79,6 +87,20 @@ class nivelController extends Controller
      */
     public function destroy($id)
     {
-        //
+        if(empty($id)) {
+
+            return response()->json(['message'=>'el id es obligatorio', 'code'=>'406']);
+        }
+
+
+        $nivel=Nivel::find($id);
+        if(empty($nivel)){
+
+                return response()->json(['message'=>'nivel no encontrado', 'code'=>'404']);
+        }
+        
+        $nivel->delete();
+
+        return response()->json(['message'=>'nivel borrado', 'code'=>'200']);
     }
 }
