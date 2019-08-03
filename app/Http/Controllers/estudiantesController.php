@@ -8,11 +8,19 @@ use App\Nivel;
 
 class estudiantesController extends Controller
 {
+
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+ * @SWG\Get(
+ *   path="/estudiantes",
+ *   tags={"Estudiantes"},
+ *   summary="estudiantes",
+ *   operationId="getCustomerRates1",
+ *   @SWG\Response(response=200, description="successful operation"),
+ *   @SWG\Response(response=406, description="not acceptable"),
+ *   @SWG\Response(response=500, description="internal server error")
+ * )
+ *
+ */
     public function index()
     {
         $estudiantes= Estudiantes::all();
@@ -20,10 +28,43 @@ class estudiantesController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * @SWG\Post(
+     *   path="/estudiantes",
+     *   tags={"Estudiantes"},
+     *   summary="Ingresar estudiantes",
+     *   operationId="getCustomerRates2",
+     *   @SWG\Parameter(
+     *     name="nombre",
+     *     in="formData",
+     *     description="ingresar la nombre",
+     *     required=true,
+     *     type="string"
+     *   ),
+     *   @SWG\Parameter(
+     *     name="apellido",
+     *     in="formData",
+     *     description="ingresar la apellido",
+     *     required=true,
+     *     type="string"
+     *   ),
+     *   @SWG\Parameter(
+     *     name="cedula",
+     *     in="formData",
+     *     description="ingresar la apellido",
+     *     required=true,
+     *     type="string"
+     *   ),
+     *   @SWG\Parameter(
+     *     name="nivelid",
+     *     in="formData",
+     *     description="ingresar la nivelid",
+     *     required=true,
+     *     type="string"
+     *   ),
+     *   @SWG\Response(response=200, description="successful operation"),
+     *   @SWG\Response(response=404, description="not found"),)
+     * )
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
@@ -47,10 +88,23 @@ class estudiantesController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * @SWG\Get(
+     *   path="/estudiantes/{id}",
+     *   tags={"Estudiantes"},
+     *   summary="obtener Estudintes",
+     *   operationId="getRed",
+     *   @SWG\Parameter(
+     *     name="id",
+     *     in="path",
+     *     description="ingresar id del Estudiantes",
+     *     required=true,
+     *     type="integer"
+     *   ),
+     *   @SWG\Response(response=200, description="datos obtenidos correctamente"),
+     *   @SWG\Response(response=404, description="el id de Estudiantes existe"),
+     *   @SWG\Response(response=422, description="no se permiten valores nulos"),
+     * )
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
      */
     public function show($id)
     {
@@ -63,11 +117,51 @@ class estudiantesController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * @SWG\Put(
+     *   path="/estudiantes/{id}",
+     *   tags={"Estudiantes"},
+     *   summary="actualizar Estudiantes",
+     *   operationId="sharedRed",
+     *   @SWG\Parameter(
+     *     name="id",
+     *     in="path",
+     *     description="ingresar id del Estudiantes",
+     *     required=true,
+     *     type="integer"
+     *   ),
+     *   @SWG\Parameter(
+     *     name="nombre",
+     *     in="formData",
+     *     description="ingresar la nombre",
+     *     required=true,
+     *     type="string"
+     *   ),
+     *   @SWG\Parameter(
+     *     name="apellido",
+     *     in="formData",
+     *     description="ingresar la apellido",
+     *     required=true,
+     *     type="string"
+     *   ),
+     *   @SWG\Parameter(
+     *     name="cedula",
+     *     in="formData",
+     *     description="ingresar la cedula",
+     *     required=true,
+     *     type="string"
+     *   ),
+     *   @SWG\Parameter(
+     *     name="nivelid",
+     *     in="formData",
+     *     description="ingresar la nivelid",
+     *     required=true,
+     *     type="string"
+     *   ),
+     *   @SWG\Response(response=200, description="datos obtenidos correctamente"),
+     *   @SWG\Response(response=404, description="Estudiantes no encontrado"),
+     *   @SWG\Response(response=422, description="no se permiten valores nulos"),
+     * )
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
@@ -95,10 +189,22 @@ class estudiantesController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * @SWG\Delete(
+     *   path="/estudiantes/{id}",
+     *   tags={"Estudiantes"},
+     *   summary="eliminar Estudiantes",
+     *   operationId="deleteRedes",
+     *   @SWG\Parameter(
+     *     name="id",
+     *     in="path",
+     *     description="ingresar el id que va a eliminar",
+     *     required=true,
+     *     type="integer"
+     *   ),
+     *   @SWG\Response(response=204, description="Estudiantes eliminada correctamente"),
+     *   @SWG\Response(response=404, description="Estudiantes no encontrada"),
+     * )
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {

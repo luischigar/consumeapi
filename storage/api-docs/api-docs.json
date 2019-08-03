@@ -1,0 +1,315 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "title": "API nivel",
+        "version": "1.0.0"
+    },
+    "basePath": "/api/v1",
+    "paths": {
+        "/estudiantes": {
+            "get": {
+                "tags": [
+                    "Estudiantes"
+                ],
+                "summary": "estudiantes",
+                "operationId": "getCustomerRates1",
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    },
+                    "406": {
+                        "description": "not acceptable"
+                    },
+                    "500": {
+                        "description": "internal server error"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Estudiantes"
+                ],
+                "summary": "Ingresar estudiantes",
+                "operationId": "getCustomerRates2",
+                "parameters": [
+                    {
+                        "name": "nombre",
+                        "in": "formData",
+                        "description": "ingresar la nombre",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "apellido",
+                        "in": "formData",
+                        "description": "ingresar la apellido",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "cedula",
+                        "in": "formData",
+                        "description": "ingresar la apellido",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "nivelid",
+                        "in": "formData",
+                        "description": "ingresar la nivelid",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    },
+                    "404": {
+                        "description": "not found"
+                    }
+                }
+            }
+        },
+        "/estudiantes/{id}": {
+            "get": {
+                "tags": [
+                    "Estudiantes"
+                ],
+                "summary": "obtener Estudintes",
+                "operationId": "getRed",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ingresar id del Estudiantes",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "datos obtenidos correctamente"
+                    },
+                    "404": {
+                        "description": "el id de Estudiantes existe"
+                    },
+                    "422": {
+                        "description": "no se permiten valores nulos"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Estudiantes"
+                ],
+                "summary": "actualizar Estudiantes",
+                "operationId": "sharedRed",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ingresar id del Estudiantes",
+                        "required": true,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "nombre",
+                        "in": "formData",
+                        "description": "ingresar la nombre",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "apellido",
+                        "in": "formData",
+                        "description": "ingresar la apellido",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "cedula",
+                        "in": "formData",
+                        "description": "ingresar la cedula",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "nivelid",
+                        "in": "formData",
+                        "description": "ingresar la nivelid",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "datos obtenidos correctamente"
+                    },
+                    "404": {
+                        "description": "Estudiantes no encontrado"
+                    },
+                    "422": {
+                        "description": "no se permiten valores nulos"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Estudiantes"
+                ],
+                "summary": "eliminar Estudiantes",
+                "operationId": "deleteRedes",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ingresar el id que va a eliminar",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Estudiantes eliminada correctamente"
+                    },
+                    "404": {
+                        "description": "Estudiantes no encontrada"
+                    }
+                }
+            }
+        },
+        "/nivel": {
+            "get": {
+                "tags": [
+                    "Nivel"
+                ],
+                "summary": "nivel",
+                "operationId": "getCustomerRates1",
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    },
+                    "406": {
+                        "description": "not acceptable"
+                    },
+                    "500": {
+                        "description": "internal server error"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Nivel"
+                ],
+                "summary": "Ingresar Nivel",
+                "operationId": "getCustomerRates2",
+                "parameters": [
+                    {
+                        "name": "descripcion",
+                        "in": "formData",
+                        "description": "ingresar la descripcion",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    },
+                    "404": {
+                        "description": "not found"
+                    }
+                }
+            }
+        },
+        "/nivel/{id}": {
+            "get": {
+                "tags": [
+                    "Nivel"
+                ],
+                "summary": "obtener Nivel",
+                "operationId": "getRed",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ingresar id del nivel",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "datos obtenidos correctamente"
+                    },
+                    "404": {
+                        "description": "el id de Nivel existe"
+                    },
+                    "422": {
+                        "description": "no se permiten valores nulos"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Nivel"
+                ],
+                "summary": "actualizar Nivel",
+                "operationId": "sharedRed",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ingresar id del nivel",
+                        "required": true,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "descripcion",
+                        "in": "formData",
+                        "description": "ingresar la descripcion",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "datos obtenidos correctamente"
+                    },
+                    "404": {
+                        "description": "Nivel no encontrado"
+                    },
+                    "422": {
+                        "description": "no se permiten valores nulos"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Nivel"
+                ],
+                "summary": "eliminar nivel",
+                "operationId": "deleteRedes",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ingresar el id que va a eliminar",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Nivel eliminada correctamente"
+                    },
+                    "404": {
+                        "description": "Nivel no encontrada"
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {}
+}

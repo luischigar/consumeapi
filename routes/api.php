@@ -22,4 +22,4 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::resource('/v1/nivel','nivelcontroller');
 
-Route::resource('/v2/estudiantes','estudiantescontroller');
+Route::resource('/v1/estudiantes','estudiantescontroller');
